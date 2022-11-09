@@ -10,7 +10,7 @@ class King: public Chessman {
 
 public:
     explicit King(Color color): Chessman(color) {}
-    bool is_legal() override;
+    bool is_legal(Coord& start, Coord& end) override;
     bool is_white() override;
 };
 

@@ -16,10 +16,16 @@ int main() {
     std::cout << &test << std::endl;
     std::cout << chessman << std::endl;
     std::cout << "Hello, World!" << std::endl;
-    Chessman* king = new King(Color::white);
+    King* king = new King(Color::white);
     auto* a1 = new Square(1, 1, king);
-    auto* a2 = new Square(1, 2);
+    auto* a2 = new Square(1, 1);
     std::cout << a1->has_piece() << std::endl;
     std::cout << a2->has_piece() << std::endl;
+    delete a1->get_piece();
+    std::cout << a1->get_piece() << std::endl;
+    std::cout << a1->has_piece() << std::endl;
+    if (*a1 == *a2){
+        std::cout << "true" << std::endl;
+    }
     return 0;
 }
