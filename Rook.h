@@ -4,10 +4,13 @@
 
 #ifndef GAMECHESSCORE_ROOK_H
 #define GAMECHESSCORE_ROOK_H
+#include "Chessman.h"
 
+class Rook: public Chessman {
 
-class Rook {
-
+public:
+    explicit Rook(Color color): Chessman(color) {}
+    bool is_legal(Coord& start, Coord& end) override;
 };
 
 

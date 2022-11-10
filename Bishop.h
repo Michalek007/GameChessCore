@@ -4,10 +4,13 @@
 
 #ifndef GAMECHESSCORE_BISHOP_H
 #define GAMECHESSCORE_BISHOP_H
+#include "Chessman.h"
 
+class Bishop: public Chessman {
 
-class Bishop {
-
+public:
+    explicit Bishop(Color color): Chessman(color) {}
+    bool is_legal(Coord& start, Coord& end) override;
 };
 
 

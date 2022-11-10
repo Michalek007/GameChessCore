@@ -4,10 +4,13 @@
 
 #ifndef GAMECHESSCORE_QUEEN_H
 #define GAMECHESSCORE_QUEEN_H
+#include "Chessman.h"
 
+class Queen: public Chessman {
 
-class Queen {
-
+public:
+    explicit Queen(Color color): Chessman(color) {}
+    bool is_legal(Coord& start, Coord& end) override;
 };
 
 

@@ -3,3 +3,13 @@
 //
 
 #include "Bishop.h"
+
+bool Bishop::is_legal(Coord& start, Coord& end){
+    if (start.is_equal(end)){
+        return false;
+    }
+    if (start.is_diagonal(end)){
+        return true;
+    }
+    return false;
+}
