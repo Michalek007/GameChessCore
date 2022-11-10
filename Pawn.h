@@ -4,10 +4,13 @@
 
 #ifndef GAMECHESSCORE_PAWN_H
 #define GAMECHESSCORE_PAWN_H
+#include "Chessman.h"
 
+class Pawn: public Chessman {
 
-class Pawn {
-
+public:
+    explicit Pawn(Color color): Chessman(color) {}
+    bool is_legal(Coord& start, Coord& end) override;
 };
 
 

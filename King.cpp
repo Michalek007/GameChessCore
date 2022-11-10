@@ -4,43 +4,41 @@
 #include "King.h"
 
 bool King::is_legal(Coord& start, Coord& end){
-    if (start.get_x() == end.get_x() && start.get_y() == end.get_y()){
+    if (start.is_equal(end)){
         return false;
     }
-    else if (start.get_x() == end.get_x() && start.get_y() == end.get_y() + 1){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() && start.get_y() == end.get_y() - 1){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() + 1 && start.get_y() == end.get_y()){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() - 1 && start.get_y() == end.get_y()){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() + 1 && start.get_y() == end.get_y() + 1){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() + 1 && start.get_y() == end.get_y() - 1){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() - 1 && start.get_y() == end.get_y() + 1){
-        return true;
-    }
-    else if (start.get_x() == end.get_x() - 1 && start.get_y() == end.get_y() - 1){
-        return true;
-    }
-    else{
+    if (start.x_axis_distance(end) > 1){
         return false;
     }
-}
-
-bool King::is_white(){
-    if (get_color() == Color::white){
-        return true;
-    }
-    else {
+    if (start.y_axis_distance(end) > 1){
         return false;
     }
+    return true;
+//    else if (start.get_x() == end.get_x() && start.get_y() + 1 == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() == end.get_x() && start.get_y() - 1 == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() + 1 == end.get_x() && start.get_y() == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() - 1 == end.get_x() && start.get_y() == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() + 1 == end.get_x() && start.get_y() + 1 == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() + 1 == end.get_x() && start.get_y() - 1 == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() - 1 == end.get_x() && start.get_y() + 1 == end.get_y()){
+//        return true;
+//    }
+//    else if (start.get_x() - 1 == end.get_x() && start.get_y() - 1 == end.get_y()){
+//        return true;
+//    }
+//    else{
+//        return false;
+//    }
 }

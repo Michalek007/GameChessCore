@@ -4,9 +4,14 @@
 
 #ifndef GAMECHESSCORE_KNIGHT_H
 #define GAMECHESSCORE_KNIGHT_H
+#include "Chessman.h"
 
 
-class Knight {
+class Knight: public Chessman {
+
+public:
+    explicit Knight(Color color): Chessman(color) {}
+    bool is_legal(Coord& start, Coord& end) override;
 
 };
 
