@@ -23,7 +23,9 @@ int main() {
     //std::cout << a2->has_piece() << std::endl;
     //delete a1->get_piece();
     std::cout << a1->get_piece() << std::endl;
-    a1->kill_piece();
+    delete a1;
+    auto* a3 = new Square(1, 1);
+    auto* a4 = new Square(1, 1);
     std::cout << a1->get_piece() << std::endl;
     std::cout << a1->has_piece() << std::endl;
 //    Coord c5 {3, 5};

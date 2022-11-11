@@ -10,7 +10,6 @@
 
 class Square: public Coord {
 private:
-    //Coord* _coord;
     Chessman* _piece;
 public:
     [[nodiscard]] Chessman* get_piece() const {return _piece;}
@@ -29,6 +28,7 @@ public:
     }
     void kill_piece() {
         delete _piece;
+        set_null();
     }
 };
 

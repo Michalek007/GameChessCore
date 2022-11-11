@@ -4,7 +4,7 @@
 
 #include "Chessman.h"
 
-bool Chessman::is_white(){
+bool Chessman::is_white() const{
     if (get_color() == Color::white){
         return true;
     }

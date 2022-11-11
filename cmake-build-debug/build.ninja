@@ -103,6 +103,12 @@ build CMakeFiles/GameChessCore.dir/Coord.cpp.obj: CXX_COMPILER__GameChessCore_De
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
+build CMakeFiles/GameChessCore.dir/Game.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Game.cpp || cmake_object_order_depends_target_GameChessCore
+  DEP_FILE = CMakeFiles\GameChessCore.dir\Game.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  OBJECT_DIR = CMakeFiles\GameChessCore.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GameChessCore
@@ -111,7 +117,7 @@ build CMakeFiles/GameChessCore.dir/Coord.cpp.obj: CXX_COMPILER__GameChessCore_De
 #############################################
 # Link the executable GameChessCore.exe
 
-build GameChessCore.exe: CXX_EXECUTABLE_LINKER__GameChessCore_Debug CMakeFiles/GameChessCore.dir/main.cpp.obj CMakeFiles/GameChessCore.dir/Chessman.cpp.obj CMakeFiles/GameChessCore.dir/King.cpp.obj CMakeFiles/GameChessCore.dir/Queen.cpp.obj CMakeFiles/GameChessCore.dir/Bishop.cpp.obj CMakeFiles/GameChessCore.dir/Knight.cpp.obj CMakeFiles/GameChessCore.dir/Rook.cpp.obj CMakeFiles/GameChessCore.dir/Pawn.cpp.obj CMakeFiles/GameChessCore.dir/Coord.cpp.obj
+build GameChessCore.exe: CXX_EXECUTABLE_LINKER__GameChessCore_Debug CMakeFiles/GameChessCore.dir/main.cpp.obj CMakeFiles/GameChessCore.dir/Chessman.cpp.obj CMakeFiles/GameChessCore.dir/King.cpp.obj CMakeFiles/GameChessCore.dir/Queen.cpp.obj CMakeFiles/GameChessCore.dir/Bishop.cpp.obj CMakeFiles/GameChessCore.dir/Knight.cpp.obj CMakeFiles/GameChessCore.dir/Rook.cpp.obj CMakeFiles/GameChessCore.dir/Pawn.cpp.obj CMakeFiles/GameChessCore.dir/Coord.cpp.obj CMakeFiles/GameChessCore.dir/Game.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GameChessCore.dir

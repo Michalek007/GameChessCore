@@ -6,6 +6,20 @@
 #define GAMECHESSCORE_COORD_H
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+
+
+enum class Direction{
+    up,
+    down,
+    right,
+    left,
+    right_up,
+    right_down,
+    left_up,
+    left_down,
+    undefined
+};
 
 class Coord {
 private:
@@ -17,10 +31,12 @@ public:
     void set_x(int x) {_x = x;}
     void set_y(int y) {_y = y;}
     explicit Coord(int x = 1, int y = 1);
-    bool is_equal(Coord& other);
-    int x_axis_distance(Coord& other);
-    int y_axis_distance(Coord& other);
-    int is_diagonal(Coord& other);
+    bool is_equal(Coord& other) const;
+    int x_axis_distance(Coord& other) const;
+    int y_axis_distance(Coord& other) const;
+    int is_diagonal(Coord& other) const;
+    Direction get_direction(Coord& other) const;
+//    std::vector<Coord> get_coords_in_between(Coord& other) const;
 };
 
 #endif //GAMECHESSCORE_COORD_H

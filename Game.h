@@ -4,7 +4,6 @@
 
 #ifndef GAMECHESSCORE_GAME_H
 #define GAMECHESSCORE_GAME_H
-#include <vector>
 #include <map>
 #include <string>
 #include "Square.h"
@@ -15,12 +14,14 @@ private:
     Color _turn;
     std::vector<std::map<std::string, std::string>>* _game_record {};
 public:
-    Game(std::vector<std::vector<Square*>>* board, Color turn=Color::white);
+    explicit Game(std::vector<std::vector<Square*>>* board, Color turn=Color::white);
     static std::vector<std::vector<Square*>>* init();
     Square* get_square(Coord& coord);
     Chessman* get_piece(Coord& coord);
     bool is_legal(Coord& start, Coord& end);
     void make_move(Coord& start, Coord& end);
+
+
 
 };
 
