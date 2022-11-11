@@ -85,6 +85,46 @@ Direction Coord::get_direction(Coord& other) const{
     return Direction::undefined;
 }
 
+Coord Coord::up() const{
+    Coord coord{get_x(), get_y()+1};
+    return coord;
+}
+
+Coord Coord::down() const{
+    Coord coord{get_x(), get_y()-1};
+    return coord;
+}
+
+Coord Coord::left() const{
+    Coord coord{get_x()-1, get_y()};
+    return coord;
+}
+
+Coord Coord::right() const{
+    Coord coord{get_x()+1, get_y()};
+    return coord;
+}
+
+Coord Coord::right_up() const{
+    Coord coord{get_x()+1, get_y()+1};
+    return coord;
+}
+
+Coord Coord::right_down() const{
+    Coord coord{get_x()+1, get_y()-1};
+    return coord;
+}
+
+Coord Coord::left_up() const{
+    Coord coord{get_x()-1, get_y()+1};
+    return coord;
+}
+
+Coord Coord::left_down() const{
+    Coord coord{get_x()-1, get_y()-1};
+    return coord;
+}
+
 //std::vector<Coord> Coord::get_coords_in_between(Coord& other) const{
 //    return std::vector<Coord>{};
 //}

@@ -41,6 +41,9 @@ Chessman* Game::get_piece(Coord& coord){
 }
 
 bool Game::is_legal(Coord& start, Coord& end){
+    if (!get_piece(start)->is_legal(start, end)){
+        return false;
+    }
     // check if there is same color piece at the end position
     if (get_square(end)->has_piece()){
         if (get_piece(start)->get_color() == get_piece(end)->get_color())
@@ -50,41 +53,66 @@ bool Game::is_legal(Coord& start, Coord& end){
     Direction direction = start.get_direction(end);
     switch (direction){
         case Direction::up:
-            for(int i = start.get_y() + 1; i < end.get_y(); i++){
-                Coord iter{start.get_x(), i};
+            for(int i = 0; i < start.y_axis_distance(end); i++){
+                Coord iter = start.up();
                 if (get_square(iter)->get_piece() != nullptr){
                     return false;
                 }
             }
         case Direction::down:
-            for(int i = start.get_y() - 1; i > end.get_y(); i--){
-                Coord iter{start.get_x(), i};
+            for(int i = 0; i < start.y_axis_distance(end); i++){
+                Coord iter = start.down();
                 if (get_square(iter)->get_piece() != nullptr){
                     return false;
                 }
             }
         case Direction::right:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.right();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::left:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.left();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::right_up:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.right_up();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::right_down:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.right_down();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::left_up:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.left_up();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::left_down:
-            break;
+            for(int i = 0; i < start.x_axis_distance(end); i++){
+                Coord iter = start.left_down();
+                if (get_square(iter)->get_piece() != nullptr){
+                    return false;
+                }
+            }
         case Direction::undefined:
             return false;
     }
     // make move and check if king is under attack
-    if (get_piece(start)->is_legal(start, end)){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return true;
 }
 
 void Game::make_move(Coord& start, Coord& end){

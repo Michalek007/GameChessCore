@@ -11,3 +11,14 @@
 3143	4430	6898650625942349	CMakeFiles/GameChessCore.dir/Pawn.cpp.obj	81b7ae63d6c72676
 5	981	6897971379672135	CMakeFiles/GameChessCore.dir/Coord.cpp.obj	1d3030eb84c40724
 3173	4935	6898650631032468	CMakeFiles/GameChessCore.dir/Game.cpp.obj	9fb5127a46198777
+14	1673	6898824369106623	CMakeFiles/GameChessCore.dir/Chessman.cpp.obj	447f97112bd94826
+20	1681	6898824369106623	CMakeFiles/GameChessCore.dir/King.cpp.obj	843715fbb881ca36
+5	1688	6898824369176611	CMakeFiles/GameChessCore.dir/main.cpp.obj	143227839e4282e8
+1674	2945	6898824381739110	CMakeFiles/GameChessCore.dir/Knight.cpp.obj	3b00019f613ac89b
+1681	2985	6898824382219105	CMakeFiles/GameChessCore.dir/Rook.cpp.obj	d98f764b2d1acef7
+1689	3013	6898824382509117	CMakeFiles/GameChessCore.dir/Bishop.cpp.obj	70a8de010cd1a2c7
+2986	4279	6898824395105921	CMakeFiles/GameChessCore.dir/Pawn.cpp.obj	81b7ae63d6c72676
+2945	4292	6898824395215939	CMakeFiles/GameChessCore.dir/Queen.cpp.obj	34dc6864b1656bac
+3014	4700	6898824399445893	CMakeFiles/GameChessCore.dir/Game.cpp.obj	9fb5127a46198777
+4279	5324	6898824405706417	CMakeFiles/GameChessCore.dir/Coord.cpp.obj	1d3030eb84c40724
+5324	5745	6898824409846871	GameChessCore.exe	b628bfca1d878797
