@@ -7,8 +7,8 @@
 #include "Chessman.h"
 
 class Rook: public Chessman {
-
 public:
+    bool has_moved = false;
     explicit Rook(Color color): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
 };

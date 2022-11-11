@@ -9,6 +9,7 @@
 class King: public Chessman {
 
 public:
+    bool has_moved = false;
     explicit King(Color color): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
 };
