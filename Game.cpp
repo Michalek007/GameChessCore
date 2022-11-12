@@ -122,7 +122,10 @@ std::map<std::string, std::string> Game::get_last_move(){
 
 void Game::undo_last_move(){
     std::map<std::string, std::string> last_move = get_last_move();
-
+    Coord start = decode_coord(last_move["start"]);
+    Coord end = decode_coord(last_move["end"]);
+    get_square(start)->set_piece(get_square(end)->get_piece());
+    get_square(end)->set_piece(decode_piece(last_move["taken"]));
 }
 
 Chessman* Game::decode_piece(std::string piece){
