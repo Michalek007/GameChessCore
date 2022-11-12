@@ -15,21 +15,11 @@ public:
     [[nodiscard]] Chessman* get_piece() const {return _piece;}
     void set_piece(Chessman* piece) {_piece = piece;}
     Square(int x, int y, Chessman* piece=nullptr): Coord(x, y), _piece{piece}{}
-    bool has_piece(){
-        if (_piece == nullptr){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-    void set_null() {
-        _piece = nullptr;
-    }
-    void kill_piece() {
-        delete _piece;
-        set_null();
-    }
+    bool has_piece();
+    void set_null();
+    void kill_piece();
+    [[nodiscard]] std::string get_piece_symbol() const;
+    [[nodiscard]] std::string get_coord_symbol() const;
 };
 
 #endif //GAMECHESSCORE_SQUARE_H

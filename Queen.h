@@ -11,6 +11,7 @@ class Queen: public Chessman {
 public:
     explicit Queen(Color color): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
+    [[nodiscard]] std::string get_symbol() const override {return "Q";}
 };
 
 

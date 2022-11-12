@@ -19,6 +19,7 @@ public:
     [[nodiscard]] Color get_color() const {return _color;}
     [[nodiscard]] bool is_white() const;
     virtual bool is_legal(Coord& start, Coord& end) = 0;
+    [[nodiscard]] virtual std::string get_symbol() const = 0;
 };
 
 

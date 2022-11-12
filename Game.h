@@ -12,7 +12,7 @@ class Game {
 private:
     std::vector<std::vector<Square*>>* _board;
     Color _turn;
-    std::vector<std::map<std::string, std::string>>* _game_record {};
+    std::vector<std::map<std::string, std::string>>* _game_record;
 public:
     explicit Game(std::vector<std::vector<Square*>>* board, Color turn=Color::white);
     static std::vector<std::vector<Square*>>* init();
@@ -20,9 +20,8 @@ public:
     Chessman* get_piece(Coord& coord);
     bool is_legal(Coord& start, Coord& end);
     void make_move(Coord& start, Coord& end);
-
-
-
+    void set_last_move(std::string start, std::string end, std::string taken);
+    std::map<std::string, std::string> get_last_move();
 };
 
 

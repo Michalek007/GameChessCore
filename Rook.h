@@ -11,6 +11,7 @@ public:
     bool has_moved = false;
     explicit Rook(Color color): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
+    [[nodiscard]] std::string get_symbol() const override {return "R";}
 };
 
 

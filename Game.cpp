@@ -4,9 +4,12 @@
 
 #include "Game.h"
 
+#include <utility>
+
 Game::Game(std::vector<std::vector<Square*>>* board, Color turn){
     _board = board;
     _turn = turn;
+    _game_record = new std::vector<std::map<std::string, std::string>>{};
 }
 
 std::vector<std::vector<Square*>>* Game::init(){
@@ -118,9 +121,27 @@ bool Game::is_legal(Coord& start, Coord& end){
 void Game::make_move(Coord& start, Coord& end){
     Square* begin = get_square(start);
     Square* dest = get_square(end);
-    if (begin->has_piece()){
+    std::string taken{};
+    if (!begin->has_piece()){
+        if (dest->has_piece()){
+            taken = dest->get_piece_symbol();
+        }
         dest->kill_piece();
         dest->set_piece(begin->get_piece());
         begin->set_null();
+        set_last_move(begin->get_coord_symbol(), dest->get_coord_symbol(), taken);
     }
+}
+
+void Game::set_last_move(std::string start, std::string end, std::string taken){
+    std::map<std::string, std::string> move {};
+    move["start"] = std::move(start);
+    move["end"] = std::move(end);
+    move["taken"] = std::move(taken);
+    _game_record->push_back(move);
+}
+
+
+std::map<std::string, std::string> Game::get_last_move(){
+    return _game_record->back();
 }
