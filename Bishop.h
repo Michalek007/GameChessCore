@@ -9,7 +9,7 @@
 class Bishop: public Chessman {
 
 public:
-    explicit Bishop(Color color): Chessman(color) {}
+    explicit Bishop(Color color=Color::white): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
     [[nodiscard]] std::string get_symbol() const override {return "B";}
 };

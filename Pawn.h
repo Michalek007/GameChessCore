@@ -9,7 +9,7 @@
 class Pawn: public Chessman {
 
 public:
-    explicit Pawn(Color color): Chessman(color) {}
+    explicit Pawn(Color color=Color::white): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
     [[nodiscard]] std::string get_symbol() const override {return "P";}
 };

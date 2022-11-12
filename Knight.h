@@ -10,8 +10,9 @@
 class Knight: public Chessman {
 
 public:
-    explicit Knight(Color color): Chessman(color) {}
+    explicit Knight(Color color=Color::white): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
+    [[nodiscard]] std::string get_symbol() const override {return "N";}
 
 };
 
