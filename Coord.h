@@ -44,6 +44,7 @@ public:
     [[nodiscard]] Coord right_down() const;
     [[nodiscard]] Coord left_up() const;
     [[nodiscard]] Coord left_down() const;
+    Coord get_last_coord(Direction direction) const;
 //    std::vector<Coord> get_coords_in_between(Coord& other) const;
 };
 

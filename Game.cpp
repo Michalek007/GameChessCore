@@ -10,6 +10,15 @@ Game::Game(std::vector<std::vector<Square*>>* board, Color turn){
     _game_record = new std::vector<std::map<std::string, std::string>>{};
 }
 
+void Game::change_turn(){
+    if(_turn == Color::white){
+        _turn = Color::black;
+    }
+    else{
+        _turn = Color::white;
+    }
+}
+
 Square* Game::get_square(Coord& coord) const{
     return _board->at(coord.get_x())[coord.get_y()];
 }
@@ -33,6 +42,16 @@ bool Game::is_legal(Coord& start, Coord& end) {
     }
     // make move and check if king is under attack
     make_move(start, end);
+    if (get_piece(start)->is_white()){
+        if (can_be_captured(_white_king)){
+            return false;
+        }
+    }
+    else{
+        if(can_be_captured(_black_king)){
+            return false;
+        }
+    }
     undo_last_move();
     return true;
 }
@@ -47,6 +66,7 @@ bool Game::piece_between(Coord& start, Coord& end) const{
     if (start.x_axis_distance(end) < 2 && start.y_axis_distance(end) < 2){
         return false;
     }
+
     Direction direction = start.get_direction(end);
     switch (direction){
         case Direction::up:
@@ -111,61 +131,120 @@ bool Game::piece_between(Coord& start, Coord& end) const{
     return true;
 }
 
-//bool Game::can_be_captured(Coord& start) const{
-//        for(int i = 0; i < start.y_axis_distance(end); i++){
-//            Coord iter = start.up();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                if (get_square(iter)->get_piece()->is_white()){
-//                    break;
-//                }
-//                else{
-//
-//                }
-//            }
-//        }
-//        for(int i = 0; i < start.y_axis_distance(end); i++){
-//            Coord iter = start.down();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.right();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.left();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.right_up();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.right_down();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.left_up();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//        for(int i = 0; i < start.x_axis_distance(end); i++){
-//            Coord iter = start.left_down();
-//            if (get_square(iter)->get_piece() != nullptr){
-//                return false;
-//            }
-//        }
-//}
+bool Game::can_be_captured(Coord& start) const{
+    std::vector<Coord> end_coords {
+        start.get_last_coord(Direction::up),
+        start.get_last_coord(Direction::down),
+        start.get_last_coord(Direction::right),
+        start.get_last_coord(Direction::down),
+        start.get_last_coord(Direction::right_up),
+        start.get_last_coord(Direction::right_down),
+        start.get_last_coord(Direction::left_up),
+        start.get_last_coord(Direction::left_down)};
+    for (auto &end: end_coords){
+        Direction direction = start.get_direction(end);
+        switch (direction){
+            case Direction::up:
+                for(int i = 0; i < 8-start.get_y(); i++){
+                    Coord iter = start.up();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::down:
+                for(int i = 0; i < start.get_y()-1; i++){
+                    Coord iter = start.down();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::right:
+                for(int i = 0; i < 8-start.get_x(); i++){
+                    Coord iter = start.right();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::left:
+                for(int i = 0; i < start.get_x()-1; i++){
+                    Coord iter = start.left();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::right_up:
+                for(int i = 0; i < start.x_axis_distance(end); i++){
+                    Coord iter = start.right_up();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::right_down:
+                for(int i = 0; i < start.x_axis_distance(end); i++){
+                    Coord iter = start.right_down();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::left_up:
+                for(int i = 0; i < start.x_axis_distance(end); i++){
+                    Coord iter = start.left_up();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::left_down:
+                for(int i = 0; i < start.x_axis_distance(end); i++){
+                    Coord iter = start.left_down();
+                    if (get_square(iter)->get_piece() != nullptr){
+                        if (get_piece(iter)->is_legal(iter, start)){
+                            return true;
+                        }
+                    }
+                }
+            case Direction::undefined:
+                return true;
+        }
+    }
+//    std::vector<int> x_values {1, 1, 2, 2, -1, -1, -2, -2};
+//    std::vector<int> y_values {2, -2, -1, 1, 2, -2, 1, -1};
+    std::map<int , int> l_values {{1, 2},
+                                  {1, -2},
+                                  {2, 1},
+                                  {2, -1},
+                                  {-1, 2},
+                                  {-1, -2},
+                                  {-2 , 1},
+                                  {-2 , -1}};
+    for (auto value: l_values){
+        try{
+            Coord l_coord {start.get_x() + value.first, start.get_y() + value.second};
+             if (get_square(l_coord)->has_piece()){
+                 if (get_piece(l_coord)->get_symbol() == "K"){
+                     return true;
+                 }
+             }
+        }
+        catch (const std::invalid_argument& err){
+            continue;
+        }
+    }
+    return false;
+}
 
 void Game::make_move(Coord& start, Coord& end){
     Square* begin = get_square(start);
@@ -191,6 +270,7 @@ void Game::make_move(Coord& start, Coord& end){
         dest->set_piece(begin->get_piece());
         begin->set_null();
         set_last_move(begin->get_coord_symbol(), dest->get_coord_symbol(), taken);
+        change_turn();
     }
 }
 

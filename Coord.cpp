@@ -125,6 +125,75 @@ Coord Coord::left_down() const{
     return coord;
 }
 
+Coord Coord::get_last_coord(Direction direction) const {
+    switch (direction) {
+        case Direction::up:{
+            Coord up{get_x(), 8};
+            return up;
+        }
+        case Direction::down:{
+            Coord down{get_x(), 1};
+            return down;
+        }
+        case Direction::right:{
+            Coord right{8, get_y()};
+            return right;
+        }
+        case Direction::left:{
+            Coord left{1, get_y()};
+            return left;
+        }
+        case Direction::right_up:{
+            int value{0};
+            if (get_y() >= get_x()){
+                value = 8 - get_y();
+            }
+            else{
+                value = 8 - get_x();
+            }
+            Coord right_up {get_x() + value, get_y() + value};
+            return right_up;
+        }
+        case Direction::right_down:{
+            int value{0};
+            if (get_y() >= 0 ){
+                value = get_x()-1;
+            }
+            else{
+                value = get_y()-1;
+            }
+            Coord right_up {get_x()-value, get_y() - value};
+            return right_up;
+        }
+        case Direction::left_up:{
+            int value{0};
+            if (get_y() >= 0 ){
+                value = get_x()-1;
+            }
+            else{
+                value = get_y()-1;
+            }
+            Coord right_up {get_x()-value, get_y() - value};
+            return right_up;
+        }
+        case Direction::left_down:{
+            int value{0};
+            if (get_y() >= get_x() ){
+                value = get_x()-1;
+            }
+            else{
+                value = get_y()-1;
+            }
+            Coord right_up {get_x()-value, get_y() - value};
+            return right_up;
+        }
+        case Direction::undefined:{
+            Coord undefined{};
+            return undefined;
+        }
+    }
+}
+
 //std::vector<Coord> Coord::get_coords_in_between(Coord& other) const{
 //    return std::vector<Coord>{};
 //}

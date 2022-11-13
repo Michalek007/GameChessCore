@@ -25,6 +25,7 @@ public:
     explicit Game(std::vector<std::vector<Square*>>* board=Game::init(), Color turn=Color::white);
     static std::vector<std::vector<Square*>>* init();
     [[nodiscard]] Color get_turn() const {return _turn;}
+    void change_turn();
     Square* get_square(Coord& coord) const;
     Chessman* get_piece(Coord& coord) const;
     bool is_legal(Coord& start, Coord& end);
