@@ -17,7 +17,7 @@ public:
     Square(int x, int y, Chessman* piece=nullptr): Coord(x, y), _piece{piece}{}
     bool has_piece();
     void set_null();
-    void kill_piece();
+    void capture_piece();
     [[nodiscard]] std::string get_piece_symbol() const;
     [[nodiscard]] std::string get_coord_symbol() const;
 };

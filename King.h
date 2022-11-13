@@ -9,7 +9,6 @@
 class King: public Chessman {
 
 public:
-    bool has_moved = false;
     explicit King(Color color=Color::white): Chessman(color) {}
     bool is_legal(Coord& start, Coord& end) override;
     [[nodiscard]] std::string get_symbol() const override {return "K";}

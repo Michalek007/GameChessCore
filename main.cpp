@@ -67,7 +67,7 @@ int main() {
     Coord end(1, 2);
     auto* x = (Chessman*) new King(Color::white);
     std::cout << x->is_legal(start, end) << std::endl;
-    auto* game = new Game(Game::init());
+    auto* game = new Game();
     Coord a1 {1, 1};
     Coord a2 {1, 2};
     Coord c5 {3, 5};

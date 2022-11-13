@@ -10,15 +10,15 @@ Game::Game(std::vector<std::vector<Square*>>* board, Color turn){
     _game_record = new std::vector<std::map<std::string, std::string>>{};
 }
 
-Square* Game::get_square(Coord& coord){
+Square* Game::get_square(Coord& coord) const{
     return _board->at(coord.get_x())[coord.get_y()];
 }
 
-Chessman* Game::get_piece(Coord& coord){
+Chessman* Game::get_piece(Coord& coord) const{
     return get_square(coord)->get_piece();
 }
 
-bool Game::is_legal(Coord& start, Coord& end){
+bool Game::is_legal(Coord& start, Coord& end) {
     if (!get_piece(start)->is_legal(start, end)){
         return false;
     }
@@ -28,80 +28,166 @@ bool Game::is_legal(Coord& start, Coord& end){
             return false;
     }
     // check obstacles
+    if (piece_between(start, end)){
+        return false;
+    }
+    // make move and check if king is under attack
+    make_move(start, end);
+    undo_last_move();
+    return true;
+}
+
+bool Game::piece_between(Coord& start, Coord& end) const{
+    if (start.is_equal(end)){
+        return false;
+    }
+    if (!start.is_diagonal(end)){
+        return false;
+    }
+    if (start.x_axis_distance(end) < 2 && start.y_axis_distance(end) < 2){
+        return false;
+    }
     Direction direction = start.get_direction(end);
     switch (direction){
         case Direction::up:
             for(int i = 0; i < start.y_axis_distance(end); i++){
                 Coord iter = start.up();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::down:
             for(int i = 0; i < start.y_axis_distance(end); i++){
                 Coord iter = start.down();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::right:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.right();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::left:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.left();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::right_up:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.right_up();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::right_down:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.right_down();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::left_up:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.left_up();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::left_down:
             for(int i = 0; i < start.x_axis_distance(end); i++){
                 Coord iter = start.left_down();
                 if (get_square(iter)->get_piece() != nullptr){
-                    return false;
+                    return true;
                 }
             }
         case Direction::undefined:
             return false;
     }
-    // make move and check if king is under attack
     return true;
 }
+
+//bool Game::can_be_captured(Coord& start) const{
+//        for(int i = 0; i < start.y_axis_distance(end); i++){
+//            Coord iter = start.up();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                if (get_square(iter)->get_piece()->is_white()){
+//                    break;
+//                }
+//                else{
+//
+//                }
+//            }
+//        }
+//        for(int i = 0; i < start.y_axis_distance(end); i++){
+//            Coord iter = start.down();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.right();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.left();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.right_up();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.right_down();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.left_up();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//        for(int i = 0; i < start.x_axis_distance(end); i++){
+//            Coord iter = start.left_down();
+//            if (get_square(iter)->get_piece() != nullptr){
+//                return false;
+//            }
+//        }
+//}
 
 void Game::make_move(Coord& start, Coord& end){
     Square* begin = get_square(start);
     Square* dest = get_square(end);
     std::string taken{};
-    if (!begin->has_piece()){
+    if (begin->has_piece()){
+        if (begin->get_piece()->get_symbol() == "K"){
+            if (get_turn() == Color::white){
+                _white_king = end;
+            }
+            else{
+                _black_king = end;
+            }
+            begin->get_piece()->has_moved = true;
+        }
+        if (begin->get_piece()->get_symbol() == "R"){
+            begin->get_piece()->has_moved = true;
+        }
         if (dest->has_piece()){
             taken = dest->get_piece_symbol();
         }
-        dest->kill_piece();
+        dest->capture_piece();
         dest->set_piece(begin->get_piece());
         begin->set_null();
         set_last_move(begin->get_coord_symbol(), dest->get_coord_symbol(), taken);
@@ -133,24 +219,18 @@ Chessman* Game::decode_piece(std::string piece){
         return nullptr;
     }
     switch (piece[0]) {
-        case 'K':{
+        case 'K':
             return new King();
-        }
-        case 'Q':{
+        case 'Q':
             return new Queen();
-        }
-        case 'B':{
+        case 'B':
             return new Bishop();
-        }
-        case 'N':{
+        case 'N':
             return new Knight();
-        }
-        case 'R':{
+        case 'R':
             return new Rook();
-        }
-        case 'P':{
+        case 'P':
             return new Pawn();
-        }
     }
     return nullptr;
 }
@@ -235,7 +315,6 @@ std::vector<std::vector<Square*>>* Game::init(){
     std::vector<Square*> row6 {f1, f2, f3 ,f4, f5, f6, f7, f8};
     std::vector<Square*> row7 {g1, g2, g3 ,g4, g5, g6, g7, g8};
     std::vector<Square*> row8 {h1, h2, h3 ,h4, h5, h6, h7, h8};
-
     auto* board = new std::vector<std::vector<Square*>>{row1, row2, row3, row4, row5, row6, row7, row8};
     return board;
 }

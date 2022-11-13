@@ -14,6 +14,7 @@ class Chessman {
 private:
     Color _color;
 public:
+    bool has_moved = false;
     explicit Chessman(Color color = Color::white): _color{color}{}
     virtual ~Chessman()= default;
     [[nodiscard]] Color get_color() const {return _color;}
