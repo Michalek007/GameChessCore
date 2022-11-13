@@ -8,7 +8,7 @@
 #include "Coord.h"
 
 
-class Square: public Coord {
+class Square: private Coord {
 private:
     Chessman* _piece;
 public:

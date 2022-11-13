@@ -26,10 +26,10 @@ private:
     int _x;
     int _y;
 public:
-    [[nodiscard]] int get_x() const {return _x;}
-    [[nodiscard]] int get_y() const {return _y;}
     void set_x(int x) {_x = x;}
     void set_y(int y) {_y = y;}
+    [[nodiscard]] int get_x() const {return _x;}
+    [[nodiscard]] int get_y() const {return _y;}
     explicit Coord(int x = 1, int y = 1);
     bool is_equal(Coord& other) const;
     int x_axis_distance(Coord& other) const;
@@ -44,7 +44,7 @@ public:
     [[nodiscard]] Coord right_down() const;
     [[nodiscard]] Coord left_up() const;
     [[nodiscard]] Coord left_down() const;
-    Coord get_last_coord(Direction direction) const;
+    [[nodiscard]] Coord get_last_coord(Direction direction) const;
 //    std::vector<Coord> get_coords_in_between(Coord& other) const;
 };
 

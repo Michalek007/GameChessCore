@@ -27,10 +27,58 @@ Chessman* Game::get_piece(Coord& coord) const{
     return get_square(coord)->get_piece();
 }
 
-bool Game::is_legal(Coord& start, Coord& end) {
-    if (!get_piece(start)->is_legal(start, end)){
+bool Game::is_legal_override(Coord& start, Coord& end) const{
+    Chessman* piece = get_piece(start);
+    if (piece == nullptr){
         return false;
     }
+    if (piece->get_symbol() == "P"){
+        if (!piece->is_legal(start, end)){
+            return false;
+        }
+        if (piece->is_white()){
+            if (start.get_x() == end.get_x()){
+                if (get_square(end)->has_piece()){
+                    if (get_piece(end)->is_white())
+                        return false;
+                }
+            }
+            if (!get_square(end)->has_piece()){
+                return false;
+            }
+            if (get_piece(end)->is_white()){
+                return false;
+            }
+            return true;
+        }
+        else{
+            if (start.get_x() == end.get_x()){
+                if (get_square(end)->has_piece()){
+                    if (!get_piece(end)->is_white())
+                        return false;
+                }
+            }
+            if (!get_square(end)->has_piece()){
+                return false;
+            }
+            if (!get_piece(end)->is_white()){
+                return false;
+            }
+            return true;
+        }
+    }
+    else{
+        return piece->is_legal(start, end);
+    }
+}
+
+bool Game::is_legal(Coord& start, Coord& end) {
+    if (!is_legal_override(start, end)){
+        return false;
+    }
+//    if (!get_piece(start)->is_legal(start, end)){
+//        return false;
+//    }
     // check if there is same color piece at the end position
     if (get_square(end)->has_piece()){
         if (get_piece(start)->get_color() == get_piece(end)->get_color())
@@ -52,6 +100,7 @@ bool Game::is_legal(Coord& start, Coord& end) {
             return false;
         }
     }
+    // undo move
     undo_last_move();
     return true;
 }
@@ -148,7 +197,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < 8-start.get_y(); i++){
                     Coord iter = start.up();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -157,7 +206,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.get_y()-1; i++){
                     Coord iter = start.down();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -166,7 +215,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < 8-start.get_x(); i++){
                     Coord iter = start.right();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -175,7 +224,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.get_x()-1; i++){
                     Coord iter = start.left();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -184,7 +233,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.x_axis_distance(end); i++){
                     Coord iter = start.right_up();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -193,7 +242,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.x_axis_distance(end); i++){
                     Coord iter = start.right_down();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -202,7 +251,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.x_axis_distance(end); i++){
                     Coord iter = start.left_up();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -211,7 +260,7 @@ bool Game::can_be_captured(Coord& start) const{
                 for(int i = 0; i < start.x_axis_distance(end); i++){
                     Coord iter = start.left_down();
                     if (get_square(iter)->get_piece() != nullptr){
-                        if (get_piece(iter)->is_legal(iter, start)){
+                        if (is_legal_override(iter, start)){
                             return true;
                         }
                     }
@@ -220,21 +269,13 @@ bool Game::can_be_captured(Coord& start) const{
                 return true;
         }
     }
-//    std::vector<int> x_values {1, 1, 2, 2, -1, -1, -2, -2};
-//    std::vector<int> y_values {2, -2, -1, 1, 2, -2, 1, -1};
-    std::map<int , int> l_values {{1, 2},
-                                  {1, -2},
-                                  {2, 1},
-                                  {2, -1},
-                                  {-1, 2},
-                                  {-1, -2},
-                                  {-2 , 1},
-                                  {-2 , -1}};
+    std::map<int , int> l_values {{1, 2}, {1, -2}, {2, 1}, {2, -1},
+                                  {-1, 2}, {-1, -2}, {-2 , 1}, {-2 , -1}};
     for (auto value: l_values){
         try{
             Coord l_coord {start.get_x() + value.first, start.get_y() + value.second};
              if (get_square(l_coord)->has_piece()){
-                 if (get_piece(l_coord)->get_symbol() == "K"){
+                 if (get_piece(l_coord)->get_symbol() == "N"){
                      return true;
                  }
              }
@@ -271,6 +312,7 @@ void Game::make_move(Coord& start, Coord& end){
         begin->set_null();
         set_last_move(begin->get_coord_symbol(), dest->get_coord_symbol(), taken);
         change_turn();
+        // TODO: pawn promotion when at the 1st or 8th line
     }
 }
 
@@ -294,23 +336,31 @@ void Game::undo_last_move(){
     get_square(end)->set_piece(decode_piece(last_move["taken"]));
 }
 
-Chessman* Game::decode_piece(std::string piece){
+Chessman* Game::decode_piece(std::string piece) const{
+    // TODO: color as argument, static method
     if (piece.empty()){
         return nullptr;
     }
+    Color color = get_turn();
+    if (color == Color::white){
+        color = Color::black;
+    }
+    else{
+        color = Color::white;
+    }
     switch (piece[0]) {
         case 'K':
-            return new King();
+            return new King(color);
         case 'Q':
-            return new Queen();
+            return new Queen(color);
         case 'B':
-            return new Bishop();
+            return new Bishop(color);
         case 'N':
-            return new Knight();
+            return new Knight(color);
         case 'R':
-            return new Rook();
+            return new Rook(color);
         case 'P':
-            return new Pawn();
+            return new Pawn(color);
     }
     return nullptr;
 }

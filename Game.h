@@ -29,13 +29,14 @@ public:
     Square* get_square(Coord& coord) const;
     Chessman* get_piece(Coord& coord) const;
     bool is_legal(Coord& start, Coord& end);
+    bool is_legal_override(Coord& start, Coord& end) const;
     bool can_be_captured(Coord& end) const;
     bool piece_between(Coord& start, Coord& end) const;
     void make_move(Coord& start, Coord& end);
     void set_last_move(std::string start, std::string end, std::string taken);
     std::map<std::string, std::string> get_last_move();
     void undo_last_move();
-    static Chessman* decode_piece(std::string piece);
+    [[nodiscard]] Chessman* decode_piece(std::string piece) const;
     static Coord decode_coord(std::string coord);
 };
 
