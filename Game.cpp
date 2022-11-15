@@ -448,3 +448,17 @@ std::vector<std::vector<Square*>>* Game::init(){
     auto* board = new std::vector<std::vector<Square*>>{row1, row2, row3, row4, row5, row6, row7, row8};
     return board;
 }
+
+void Game::print(){
+    for (auto &vec: *_board){
+        for (auto &square: vec){
+            if (square->has_piece()){
+                std::cout << square->get_piece()->get_symbol();
+            }
+            else{
+                std::cout << ".";
+            }
+        }
+        std::cout << " " << std::endl;
+    }
+}

@@ -38,6 +38,7 @@ public:
     void undo_last_move();
     [[nodiscard]] Chessman* decode_piece(std::string piece) const;
     static Coord decode_coord(std::string coord);
+    void print();
 };
 
 
