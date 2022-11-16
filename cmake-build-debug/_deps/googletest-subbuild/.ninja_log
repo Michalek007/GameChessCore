@@ -1,0 +1,21 @@
+# ninja log v5
+1	116	6903149012765063	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	2b8bed4bdef321a
+1	116	6903149012765063	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	2b8bed4bdef321a
+117	3507	6903149046667688	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	1a3effebd0550122
+117	3507	6903149046667688	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	1a3effebd0550122
+3507	3618	6903149047777225	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	e0c1ee6f98bb7f7b
+3507	3618	6903149047777225	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	e0c1ee6f98bb7f7b
+3619	3741	6903149049017030	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	c189a9a5e6a434a2
+3619	3741	6903149049017030	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	c189a9a5e6a434a2
+3742	3848	6903149050077154	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	a62d48bf9fa24e89
+3742	3848	6903149050077154	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	a62d48bf9fa24e89
+3848	3956	6903149051167166	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	a12b84a60dbb84e1
+3848	3956	6903149051167166	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	a12b84a60dbb84e1
+3957	4067	6903149052277173	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	f26e65f1380adcf7
+3957	4067	6903149052277173	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	f26e65f1380adcf7
+4068	4184	6903149053437062	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	f6a37d32912c16a8
+4068	4184	6903149053437062	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	f6a37d32912c16a8
+4184	4335	6903149054947162	CMakeFiles/googletest-populate-complete	feaab07c227f6410
+4184	4335	6903149054947162	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	feaab07c227f6410
+4184	4335	6903149054947162	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	feaab07c227f6410
+4184	4335	6903149054947162	C:/Users/Public/Projects/GameChessCore/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	feaab07c227f6410

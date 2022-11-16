@@ -1,10 +1,8 @@
 #include <iostream>
-#include <vector>
 #include <string>
 #include <algorithm>
 #include <map>
-#include "King.h"
-#include "Square.h"
+//#include "_deps/googletest/googletest/include/gtest/gtest.h"
 #include "Game.h"
 
 //int char_to_int(const char digit) { return (int)digit - '0'; }

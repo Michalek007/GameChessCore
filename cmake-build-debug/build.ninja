@@ -52,66 +52,77 @@ build cmake_object_order_depends_target_GameChessCore: phony || CMakeFiles/GameC
 build CMakeFiles/GameChessCore.dir/main.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/main.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Chessman.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Chessman.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Chessman.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/King.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/King.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\King.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Queen.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Queen.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Queen.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Bishop.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Bishop.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Bishop.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Knight.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Knight.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Knight.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Rook.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Rook.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Rook.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Pawn.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Pawn.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Pawn.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Coord.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Coord.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Coord.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Square.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Square.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Square.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
 build CMakeFiles/GameChessCore.dir/Game.cpp.obj: CXX_COMPILER__GameChessCore_Debug C$:/Users/Public/Projects/GameChessCore/Game.cpp || cmake_object_order_depends_target_GameChessCore
   DEP_FILE = CMakeFiles\GameChessCore.dir\Game.cpp.obj.d
   FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Public/Projects/GameChessCore/include/chess_core
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   OBJECT_FILE_DIR = CMakeFiles\GameChessCore.dir
 
