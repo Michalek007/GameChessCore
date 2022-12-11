@@ -136,6 +136,7 @@ build CMakeFiles/GameChessCore.dir/Game.cpp.obj: CXX_COMPILER__GameChessCore_Deb
 
 build GameChessCore.exe: CXX_EXECUTABLE_LINKER__GameChessCore_Debug CMakeFiles/GameChessCore.dir/main.cpp.obj CMakeFiles/GameChessCore.dir/Chessman.cpp.obj CMakeFiles/GameChessCore.dir/King.cpp.obj CMakeFiles/GameChessCore.dir/Queen.cpp.obj CMakeFiles/GameChessCore.dir/Bishop.cpp.obj CMakeFiles/GameChessCore.dir/Knight.cpp.obj CMakeFiles/GameChessCore.dir/Rook.cpp.obj CMakeFiles/GameChessCore.dir/Pawn.cpp.obj CMakeFiles/GameChessCore.dir/Coord.cpp.obj CMakeFiles/GameChessCore.dir/Square.cpp.obj CMakeFiles/GameChessCore.dir/Game.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GameChessCore.dir
   POST_BUILD = cd .

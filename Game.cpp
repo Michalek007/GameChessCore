@@ -20,7 +20,7 @@ void Game::change_turn(){
 }
 
 Square* Game::get_square(Coord& coord) const{
-    return _board->at(coord.get_x())[coord.get_y()];
+    return _board->at(coord.get_y()-1)[coord.get_x()-1];
 }
 
 Chessman* Game::get_piece(Coord& coord) const{

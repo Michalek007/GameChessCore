@@ -75,6 +75,8 @@ int main() {
             std::cin >> end_str;
             Coord start {Game::decode_coord(start_str)};
             Coord end {Game::decode_coord(end_str)};
+//            game->make_move(start, end);
+//            game->print();
             if (game->is_legal(start, end)){
                 game->make_move(start, end);
                 game->print();
