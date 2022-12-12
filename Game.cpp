@@ -4,7 +4,7 @@
 
 #include "Game.h"
 
-Game::Game(std::vector<std::vector<Square*>>* board, Color turn){
+Game::Game(std::vector<std::vector<std::shared_ptr<Square>>>* board, Color turn){
     _board = board;
     _turn = turn;
     _game_record = new std::vector<std::map<std::string, std::string>>{};
@@ -19,16 +19,16 @@ void Game::change_turn(){
     }
 }
 
-Square* Game::get_square(Coord& coord) const{
+std::shared_ptr<Square> Game::get_square(Coord& coord) const{
     return _board->at(coord.get_y()-1)[coord.get_x()-1];
 }
 
-Chessman* Game::get_piece(Coord& coord) const{
+std::shared_ptr<Chessman> Game::get_piece(Coord& coord) const{
     return get_square(coord)->get_piece();
 }
 
 bool Game::is_legal_override(Coord& start, Coord& end) const{
-    Chessman* piece = get_piece(start);
+    std::shared_ptr<Chessman> piece = get_piece(start);
     if (piece == nullptr){
         return false;
     }
@@ -182,14 +182,14 @@ bool Game::piece_between(Coord& start, Coord& end) const{
 
 bool Game::can_be_captured(Coord& start) const{
     std::vector<Coord> end_coords {
-        start.get_last_coord(Direction::up),
-        start.get_last_coord(Direction::down),
-        start.get_last_coord(Direction::right),
-        start.get_last_coord(Direction::down),
-        start.get_last_coord(Direction::right_up),
-        start.get_last_coord(Direction::right_down),
-        start.get_last_coord(Direction::left_up),
-        start.get_last_coord(Direction::left_down)};
+            start.get_last_coord(Direction::up),
+            start.get_last_coord(Direction::down),
+            start.get_last_coord(Direction::right),
+            start.get_last_coord(Direction::down),
+            start.get_last_coord(Direction::right_up),
+            start.get_last_coord(Direction::right_down),
+            start.get_last_coord(Direction::left_up),
+            start.get_last_coord(Direction::left_down)};
     for (auto &end: end_coords){
         Direction direction = start.get_direction(end);
         switch (direction){
@@ -274,11 +274,11 @@ bool Game::can_be_captured(Coord& start) const{
     for (auto value: l_values){
         try{
             Coord l_coord {start.get_x() + value.first, start.get_y() + value.second};
-             if (get_square(l_coord)->has_piece()){
-                 if (get_piece(l_coord)->get_symbol() == "N"){
-                     return true;
-                 }
-             }
+            if (get_square(l_coord)->has_piece()){
+                if (get_piece(l_coord)->get_symbol() == "N"){
+                    return true;
+                }
+            }
         }
         catch (const std::invalid_argument& err){
             continue;
@@ -288,8 +288,8 @@ bool Game::can_be_captured(Coord& start) const{
 }
 
 void Game::make_move(Coord& start, Coord& end){
-    Square* begin = get_square(start);
-    Square* dest = get_square(end);
+    std::shared_ptr<Square> begin = get_square(start);
+    std::shared_ptr<Square> dest = get_square(end);
     std::string taken{};
     if (begin->has_piece()){
         if (begin->get_piece()->get_symbol() == "K"){
@@ -336,7 +336,7 @@ void Game::undo_last_move(){
     get_square(end)->set_piece(decode_piece(last_move["taken"]));
 }
 
-Chessman* Game::decode_piece(std::string piece) const{
+std::shared_ptr<Chessman> Game::decode_piece(std::string piece) const{
     // TODO: color as argument, static method
     if (piece.empty()){
         return nullptr;
@@ -350,15 +350,15 @@ Chessman* Game::decode_piece(std::string piece) const{
     }
     switch (piece[0]) {
         case 'K':
-            return new King(color);
+            return std::make_shared<King>(color);
         case 'Q':
-            return new Queen(color);
+            return std::make_shared<Queen>(color);
         case 'B':
-            return new Bishop(color);
+            return std::make_shared<Bishop>(color);
         case 'N':
-            return new Knight(color);
+            return std::make_shared<Knight>(color);
         case 'R':
-            return new Rook(color);
+            return std::make_shared<Rook>(color);
         case 'P':
             return std::make_shared<Pawn>(color);
     }
@@ -372,7 +372,7 @@ Coord Game::decode_coord(std::string coord){
     return result_coord;
 }
 
-std::vector<std::vector<Square*>>* Game::init(){
+std::vector<std::vector<std::shared_ptr<Square>>>* Game::init(){
     std::shared_ptr<Square> a1 (new Square(1, 1, std::make_shared<Rook>()));
     std::shared_ptr<Square> a2  (new Square(1, 2, std::make_shared<Knight>()));
     std::shared_ptr<Square> a3  (new Square(1, 3, std::make_shared<Bishop>()));
@@ -447,7 +447,7 @@ std::vector<std::vector<Square*>>* Game::init(){
     std::vector<std::shared_ptr<Square>> row7 {g1, g2, g3 ,g4, g5, g6, g7, g8};
     std::vector<std::shared_ptr<Square>> row8 {h1, h2, h3 ,h4, h5, h6, h7, h8};
 
-    std::vector<std::vector<std::shared_ptr<Square>>> board {row1, row2, row3, row4, row5, row6, row7, row8};
+    auto* board = new std::vector<std::vector<std::shared_ptr<Square>>> {row1, row2, row3, row4, row5, row6, row7, row8};
     return board;
 }
 
