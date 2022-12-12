@@ -16,7 +16,6 @@ void Square::set_null() {
     _piece = nullptr;
 }
 void Square::capture_piece() {
-    delete _piece;
     set_null();
 }
 

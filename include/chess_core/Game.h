@@ -16,7 +16,7 @@
 
 class Game {
 private:
-    std::vector<std::vector<Square*>>* _board;
+    std::shared_ptr<std::vector<std::vector<std::shared_ptr<Square>>>> _board;
     Color _turn;
     std::vector<std::map<std::string, std::string>>* _game_record;
     Coord _white_king {4, 1};
