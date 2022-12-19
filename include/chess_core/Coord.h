@@ -35,7 +35,7 @@ public:
     bool is_equal(Coord& other) const;
     int x_axis_distance(Coord& other) const;
     int y_axis_distance(Coord& other) const;
-    int is_diagonal(Coord& other) const;
+    bool is_diagonal(Coord& other) const;
     Direction get_direction(Coord& other) const;
     [[nodiscard]] Coord up() const;
     [[nodiscard]] Coord down() const;

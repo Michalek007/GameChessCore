@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 20)
 #set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 #FetchContent_MakeAvailable(googletest)
 
-set(SOURCES main.cpp Chessman.cpp King.cpp Queen.cpp Bishop.cpp Knight.cpp Rook.cpp Pawn.cpp Coord.cpp Square.cpp Game.cpp)
+set(SOURCES main.cpp Chessman.cpp King.cpp Queen.cpp Bishop.cpp Knight.cpp Rook.cpp Pawn.cpp Coord.cpp Square.cpp Game.cpp tests/test_coord.h)
 
 add_executable(GameChessCore ${SOURCES})
 

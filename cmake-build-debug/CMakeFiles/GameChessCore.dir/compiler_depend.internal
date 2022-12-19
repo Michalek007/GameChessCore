@@ -2073,6 +2073,8 @@ CMakeFiles/GameChessCore.dir/main.cpp.obj
  C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h
  C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_map.h
  C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multimap.h
+ C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cassert
+ C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/x86_64-w64-mingw32/include/assert.h
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Game.h
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Square.h
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Chessman.h
@@ -2101,4 +2103,6 @@ CMakeFiles/GameChessCore.dir/main.cpp.obj
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Knight.h
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Rook.h
  C:/Users/Public/Projects/GameChessCore/include/chess_core/Pawn.h
+ C:/Users/Public/Projects/GameChessCore/tests/test_coord.cpp
+ C:/Users/Public/Projects/GameChessCore/include/chess_core/Coord.h
 

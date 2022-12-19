@@ -117,6 +117,9 @@
 		<Unit filename="C:/Users/Public/Projects/GameChessCore/main.cpp">
 			<Option target="GameChessCore"/>
 		</Unit>
+		<Unit filename="C:/Users/Public/Projects/GameChessCore/tests/test_coord.h">
+			<Option target="GameChessCore"/>
+		</Unit>
 		<Unit filename="C:/Users/Public/Projects/GameChessCore/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

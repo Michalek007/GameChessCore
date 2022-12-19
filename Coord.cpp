@@ -40,7 +40,7 @@ int Coord::y_axis_distance(Coord& other) const{
     return abs(get_y() - other.get_y());
 }
 
-int Coord::is_diagonal(Coord& other) const{
+bool Coord::is_diagonal(Coord& other) const{
     if (x_axis_distance(other) == y_axis_distance(other)){
         return true;
     }

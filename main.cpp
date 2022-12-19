@@ -2,9 +2,10 @@
 #include <string>
 #include <algorithm>
 #include <map>
+#include <cassert>
 //#include "_deps/googletest/googletest/include/gtest/gtest.h"
 #include "Game.h"
-
+#include "tests/test_coord.h"
 //int char_to_int(const char digit) { return (int)digit - '0'; }
 
 int main() {
@@ -65,6 +66,8 @@ int main() {
 //    a1.set_x(1);
 //    game->make_move(a1, a2);
 //    return 0;
+    assert(test1());
+    assert(test2());
     auto* game = new Game();
     std::string start_str {};
     std::string end_str {};
