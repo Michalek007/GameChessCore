@@ -1,3 +1,0 @@
-C:/Users/Public/Projects/GameChessCore/cmake-build-debug/CMakeFiles/GameChessCore.dir
-C:/Users/Public/Projects/GameChessCore/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Public/Projects/GameChessCore/cmake-build-debug/CMakeFiles/rebuild_cache.dir
